@@ -1,5 +1,5 @@
 class QuestionController < ApplicationController
-  before_action :load_question
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @questions = Question.all
@@ -26,8 +26,9 @@ class QuestionController < ApplicationController
 
   private
 
-  def load_question
-    @question = Question.find(params[:id])
+  def require_login
+    return true #unless is_authenticated?(params[:user_id])
+    # redirect_to login w/ flash message or something like this
   end
 
 end
