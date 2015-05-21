@@ -5,4 +5,7 @@ class Answer < ActiveRecord::Base
 	has_many :votes, as: :votable
 
 
+	validates :body, presence: true, length: { minimum: 2 }
+	validates_presence_of :author_id, :score, :question_id
+	
 end
