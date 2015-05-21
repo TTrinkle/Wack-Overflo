@@ -1,0 +1,8 @@
+Your Answer: 
+
+<%= form_for @answer, url: question_answers do |f| %>
+	<%= f.label :body %>
+	<%= f.text_field :body  %>
+
+	<%= f.submit %>
+<% end %>
