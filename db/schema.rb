@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150521205248) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "author",           null: false
+    t.integer  "author_id",        null: false
     t.text     "body",             null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150521205248) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "direction",    null: false
-    t.integer  "voter",        null: false
+    t.integer  "voter_id",     null: false
     t.integer  "votable_id"
     t.string   "votable_type"
     t.datetime "created_at"
