@@ -1,6 +1,16 @@
 <!-- could be a render with the questions and answers and comments on it -->
 <h3><%=@question.title%></h3>
 <h4><%=@question.body%></h4>
+<% if current_user.id == @question.user_id%>
+  <%= link_to "Edit this question", edit_question_path%>
+<%end%>
+<br>
+<%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %>
+<% @question.comments.each do |comment| %>
+  <%=comment.body%><br>
+<% end %>
+<br>
+<br>
 <%= render @question.answers %>
-<%= link_to "Edit this question", edit_question_path(@question)%>
+<p>Answer this question</p>
 <%= render 'answers/form' %>
