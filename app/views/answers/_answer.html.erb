@@ -1,1 +1,3 @@
 <%=answer.body%>
+
+<%= link_to "Change you're mind", edit_question_answer_path(question_id: @question.id, id: answer.id) %> 
