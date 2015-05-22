@@ -1,8 +1,8 @@
 class AnswersController < ApplicationController
 
 	def create
-		p params
-		@answer = Answer.new 
+		@answer = Answer.new(answer_params)
+		@answer.author_id = session[:user_id]
 		if @answer.save
 			redirect_to root_path
 		else
@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
 		@answer = Answer.new
 	end
 
-	def update 
+	def update
 
 	end
 
@@ -30,8 +30,7 @@ class AnswersController < ApplicationController
 	private
 
 	def answer_params
-		params[:answer][:user_id] = session[:id]
 		params[:answer][:question_id] = params[:question_id]
-		params.require(:answer).permit(:body, :user_id, :question_id)
+		params.require(:answer).permit(:body, :question_id)
 	end
 end

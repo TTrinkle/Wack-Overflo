@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new(question_id: @question.id)
   end
 
   def edit
