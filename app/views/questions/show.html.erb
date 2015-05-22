@@ -1,6 +1,6 @@
 <!-- could be a render with the questions and answers and comments on it -->
 <h3><%=@question.title%></h3>
 <h4><%=@question.body%></h4>
+<%= render @question.answers %>
 <%= link_to "Edit this question", edit_question_path(@question)%>
-
-<%= render '/answers/form', locals: @question %>
+<%= render 'answers/form' %>
