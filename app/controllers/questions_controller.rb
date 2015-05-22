@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
   def require_login
     return true unless !logged_in?
     else flash[:error] = "You must be logged in to do that."
-      redirect_to root_path
+    redirect_to(:back)
   end
 
   def get_params
