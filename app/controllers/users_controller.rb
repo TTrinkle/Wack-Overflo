@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'User was successfully created.'
     else
-      render 'new', notice: "Error User Not Created"
+      render new_user_path, notice: "Error User Not Created"
     end
   end
 

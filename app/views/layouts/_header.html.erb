@@ -11,7 +11,7 @@
       </div>
       <div class="navbar-left nav">
         <% if !current_user %>
-          <span id="create-account"><%= link_to 'Create An Account', 'users/new' %></span>
+          <span id="create-account"><%= link_to 'Create An Account', new_user_path %></span>
         <% end %>
       </div>
       <div class="collapse navbar-collapse">
@@ -20,7 +20,10 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+              <li><a href="/users/<%= current_user.id %>">My Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
+              <li class="divider"></li>
               <li><%= link_to "logout", '/logout', method: :delete %></li>
             </ul>
           </li>
