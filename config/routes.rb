@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  resource :users
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  resources :users
 
   resources :questions do
     resources :answers, only: [:create, :update, :edit, :new, :destroy]
