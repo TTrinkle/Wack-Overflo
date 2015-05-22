@@ -1,7 +1,7 @@
 Your Answer: 
 
-<%= form_for @answer, url: question_answers do |f| %>
-	<%= f.label :body %>
+<%= form_for @answer, url: question_answers_path do |f| %>
+	<%= f.label ' ' %>
 	<%= f.text_field :body  %>
 
 	<%= f.submit %>
