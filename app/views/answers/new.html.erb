@@ -1,3 +1,12 @@
 Your Answer: 
 
+<<<<<<< HEAD
 <%= render 'form' %>
+=======
+<%= form_for @answer, url: question_answers do |f| %>
+	<%= f.label :body %>
+	<%= f.text_field :body  %>
+
+	<%= f.submit %>
+<% end %>
+>>>>>>> 3fd2e1f1fd4068d1085ffd5a3957cfd024136da8
