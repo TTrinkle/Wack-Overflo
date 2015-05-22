@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :user, class_name: "User"
   has_many :comments, as: :commentable
+  has_many :votes, as: :votable
   has_many :answers
 
   validates :title, presence: true, length: { minimum: 2 }
