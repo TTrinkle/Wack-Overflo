@@ -23,7 +23,10 @@ class AnswersController < ApplicationController
 	end
 
 	def destroy
-
+		answer = Answer.find_by(id: params[:id])
+		answer.delete
+		answer.save
+		redirect_to root_path
 	end
 
 
