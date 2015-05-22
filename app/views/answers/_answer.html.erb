@@ -1,4 +1,7 @@
 <%=answer.body%>
 <%= link_to 'Delete', question_answer_path(question_id: @question.id, id: answer.id), method: :delete %>
-<%= link_to "Comment on this answer", new_comment_path, locals: { answer_id: answer.id} %>
+<%= render partial: 'comments/form', locals: {id_type: "answer", id: answer.id} %>
+<% answer.comments.each do |comment| %>
+  <%=comment.body%><br>
+<% end %>
 <br>
