@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   root 'questions#index'
 
-  resource :users
+
+  resources :users
 
   resources :questions do
     resources :answers, only: [:create, :update, :edit, :new, :destroy]
