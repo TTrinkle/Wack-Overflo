@@ -47,8 +47,9 @@ class QuestionsController < ApplicationController
   private
 
   def require_login
-    return true #unless is_authenticated?(params[:user_id])
-    # redirect_to login w/ flash message or something like this
+    return true unless !logged_in?
+    else flash[:error] = "You must be logged in to do that."
+      redirect_to root_path
   end
 
   def get_params
