@@ -14,13 +14,21 @@ class AnswersController < ApplicationController
 		@answer = Answer.new
 	end
 
-	def update
-
-	end
-
 	def edit
-
+		@answer = Answer.find(params[:id])
 	end
+ 
+	def update
+		edited_answer = Answer.find(params[:id])
+		if edited_answer.update_attributes(answer_params)
+			flash[:success] = 'Your answer was updated'
+			redirect_to root_path
+		else
+			flash[:error] = "Your answer could not be updated"
+			redirect_to new_question_answer_path
+		end
+ 	end
+ 
 
 	def destroy
 		answer = Answer.find_by(id: params[:id])

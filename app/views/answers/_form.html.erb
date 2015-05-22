@@ -1,4 +1,14 @@
-<%= form_for @answer, url: "/questions/#{params[:id]}/answers" do |f| %>
-	<%= f.text_field :body  %>
-	<%= f.submit %>
-<% end %>
+<% if @answer.id %>
+	<%= form_for @answer, url: "/questions/#{params[:id]}/answers/#{@answer.id}" do |f| %>
+		<%= f.text_field :body  %>
+		<%= f.submit %>
+	<% end %>
+
+<% else %>
+
+	<%= form_for @answer, url: "/questions/#{params[:id]}/answers" do |f| %>
+		<%= f.text_field :body  %>
+		<%= f.submit %>
+	<% end %>
+
+<!-- Seems like the decision on which form to render should belong in the controller. Will come back to this to look at moving it.  -->
