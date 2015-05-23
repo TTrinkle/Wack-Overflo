@@ -44,6 +44,18 @@ class QuestionsController < ApplicationController
   def destroy
   end
 
+  def upvote
+    @question = Question.find params[:id]
+    @question.upvote_by current_user
+    redirect_to question_path
+  end
+
+  def downvote
+    @question = Question.find params[:id]
+    @question.downvote_by current_user
+    redirect_to question_path
+  end
+
   private
 
   def require_login
