@@ -1,10 +1,13 @@
-var graph = function (user, questions, answers, comments) { 
+var graph = function (user, questions, answers, comments) {
     $('#container').highcharts({
+        credits: {
+           enabled: false
+         },
         chart: {
             type: 'column',
         },
         title: {
-            text: 'Your Activity'
+            text: ''
         },
         xAxis: {
             categories: ['Questions', 'Answers', 'Comments']

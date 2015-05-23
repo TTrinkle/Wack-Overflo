@@ -98,3 +98,17 @@ main {
 .num-answers {
   padding-left: 18px;
 }
+
+.profile-photo {
+  border-radius: 100%;
+}
+
+.profile-info {
+  width: 30%;
+  margin: auto;
+  text-align: center;
+}
+
+#chart-heading {
+  text-align: center;
+}
