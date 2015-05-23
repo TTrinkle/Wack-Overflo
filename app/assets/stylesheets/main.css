@@ -1,6 +1,12 @@
 h3 {
   padding-bottom: 20px;
 }
+
+a:hover {
+  text-decoration: none;
+  color: rgb(219,99,86);
+}
+
 #create-account {
   position: relative;
   top: 15px;
@@ -21,4 +27,31 @@ h3 {
 
 .center {
   margin: auto;
+}
+
+main {
+  padding: 10px 20px 0 20px;
+  color: #666;
+}
+
+.question-title {
+  font-size: 1.6em;
+  color: #333;
+}
+.question-body {
+  text-indent: 1em;
+  padding: 15px 0 20px 0;
+}
+
+.div-votes {
+  padding-top: 10px;
+  padding-right: 15px;
+  display: inline;
+  float: left;
+
+}
+
+.vote-count {
+  padding-left: 6px;
+  font-size: 1.5em;
 }

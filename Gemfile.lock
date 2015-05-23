@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_votable (0.10.0)
     arel (6.0.0)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
@@ -62,6 +63,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -171,11 +174,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   faker
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   pg
