@@ -1,11 +1,17 @@
 <!-- could be a render with the questions and answers and comments on it -->
-<<<<<<< HEAD
 <span class='question-title'><%=@question.title%></span>
-<div>Posted by <%=link_to @question.user.username%> on 12/21/15</div>
-<p class='question-body'><%=@question.body%></p>
 <% if logged_in? && current_user.id == @question.user_id%>
   <%= link_to "edit", edit_question_path%>
 <%end%>
+<div>Posted by <em><%=link_to @question.user.username, @question.user %></em> on <em><%= @question.created_at.strftime("%b %d, %Y") %></em></div>
+<div class='div-votes'>
+  <%= link_to '<i class="fa fa-2x fa-thumbs-o-up"></i>'.html_safe, votes_path(question_id: @question.id, direction: "up"), method: 'post' %>
+  <br>
+  <span class='vote-count'><%= @question.score%></span>
+  <br>
+  <%= link_to '<i class="fa fa-2x fa-thumbs-o-down"></i>'.html_safe, root_path %>
+</div>
+<p class='question-body'><%=@question.body%></p>
 <br>
 <%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %>
 <% @question.comments.each do |comment| %>
