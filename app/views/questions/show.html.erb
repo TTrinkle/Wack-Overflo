@@ -17,14 +17,17 @@
 <% @question.comments.each do |comment| %>
   <%=comment.body%><br>
 <% end %>
+
 <br>
 <br>
+
 <h3>Answers</h3>
+
 <%= render @question.answers %>
 <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#answerModal">
   Answer This Question
 </button>
-
+<
 <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
