@@ -4,9 +4,9 @@ class AnswersController < ApplicationController
 		@answer = Answer.new(answer_params)
 		@answer.author_id = session[:user_id]
 		if @answer.save
-			redirect_to root_path
+			redirect_to question_path(@answer.question)
 		else
-			redirect_to question_path
+			redirect_to question_path(@answer.question)
 		end
 	end
 

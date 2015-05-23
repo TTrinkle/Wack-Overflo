@@ -1,7 +1,7 @@
 <!-- could be a render with the questions and answers and comments on it -->
 <h3><%=@question.title%></h3>
 <h4><%=@question.body%></h4>
-<% if current_user.id == @question.user_id%>
+<% if logged_in? && current_user.id == @question.user_id%>
   <%= link_to "Edit this question", edit_question_path%>
 <%end%>
 <br>
@@ -11,6 +11,7 @@
 <% end %>
 <br>
 <br>
+<h3>Answers</h3>
 <%= render @question.answers %>
 <p>Answer this question</p>
 <%= render 'answers/form' %>
