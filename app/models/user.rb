@@ -10,15 +10,25 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   # validates :password_digest, presence: true
 
-  def self.my_answers id 
-  	Answers.where(author: id)
+  def my_answers
+    id = User.find_by(id: self.id)
+  	Answer.where(author: id).count
   end
 
-  def self.my_comments id 
-  	Comments.where(author: id)
+  def my_comments
+    id = User.find_by(id: self.id)
+  	Comment.where(author: id).count
   end
 
-  def self.my_questions id 
-  	Questions.where(author: id)
+  def my_questions
+    id = User.find_by(id: self.id)
+  	Question.where(user: id).count
+  end
+
+  def my_unanswered_questions
+    user = User.find_by(id: self.id)
+    questions = Question.where(user: user)
+    unanswered = questions.select {|question| question.answers.count == 0 }
+    unanswered.count
   end
 end
