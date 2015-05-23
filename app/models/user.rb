@@ -10,4 +10,15 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   # validates :password_digest, presence: true
 
+  def self.my_answers id 
+  	Answers.where(author: id)
+  end
+
+  def self.my_comments id 
+  	Comments.where(author: id)
+  end
+
+  def self.my_questions id 
+  	Questions.where(author: id)
+  end
 end
