@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 		answer = Answer.find_by(id: params[:id])
 		answer.delete
 		answer.save
-		redirect_to root_path
+		redirect_to question_path(params[:question_id])
 	end
 
 
