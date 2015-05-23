@@ -27,7 +27,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem 'acts_as_votable'
-gem 'gruff'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
