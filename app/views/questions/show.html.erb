@@ -5,11 +5,11 @@
 <%end%>
 <div>Posted by <em><%=link_to @question.user.username, @question.user %></em> on <em><%= @question.created_at.strftime("%b %d, %Y") %></em></div>
 <div class='div-votes'>
-  <%= link_to '<i class="fa fa-2x fa-thumbs-o-up"></i>'.html_safe, like_question_path(@question), method: :put %>
+  <%= link_to '<i class="fa fa-2x fa-caret-up"></i>'.html_safe, like_question_path(@question), method: :put %>
   <br>
   <span class='vote-count'><%= @question.rating%></span>
   <br>
-  <%= link_to '<i class="fa fa-2x fa-thumbs-o-down"></i>'.html_safe, dislike_question_path(@question), method: :put %>
+  <%= link_to '<i class="fa fa-2x fa-caret-down"></i>'.html_safe, dislike_question_path(@question), method: :put %>
 </div>
 <p class='question-body'><%=@question.body%></p>
 <br>
