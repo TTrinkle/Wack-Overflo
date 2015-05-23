@@ -12,6 +12,7 @@
   <%= link_to '<i class="fa fa-2x fa-caret-down"></i>'.html_safe, dislike_question_path(@question), method: :put %>
 </div>
 <p class='question-body'><%=@question.body%></p>
+<%= link_to 'Delete', question_path(question_id: @question.id), method: :delete %>
 <br>
 <%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %>
 <%= render partial: @question.comments %>
