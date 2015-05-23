@@ -24,9 +24,15 @@ class AnswersController < ApplicationController
 
 	def destroy
 		answer = Answer.find_by(id: params[:id])
-		answer.delete
-		answer.save
-		redirect_to question_path(params[:question_id])
+		if current_user.id == answer.author_id
+			answer.delete
+			answer.save
+			flash[:success] = "Your answer was deleted."
+			redirect_to(:back)
+		 else
+      flash[:error] = "You are not authorized to delete this question."
+      redirect_to(:back)
+    end
 	end
 
 
