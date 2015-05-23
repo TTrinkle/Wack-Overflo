@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
 
   def create
     new_question = Question.new(get_params)
+    new_question.user = current_user
     if new_question.save
       flash[:success] = "Your question was saved"
       redirect_to root_path
@@ -42,6 +43,16 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    question = Question.find_by(id: params[:question_id])
+    if current_user.id == question.user_id
+      question.delete
+      question.save
+      flash[:success] = "Your question was deleted"
+      redirect_to root_path
+    else
+      flash[:error] = "You are not authorized to delete this question."
+      redirect_to root_path
+    end
   end
 
   def upvote
@@ -65,7 +76,7 @@ class QuestionsController < ApplicationController
   end
 
   def get_params
-    params.require(:question).permit(:title, :body, :score).merge(user_id: 1)
+    params.require(:question).permit(:title, :body, :score)
   end
 
 end
