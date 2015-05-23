@@ -17,6 +17,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id params[:id]
+    @questions = @user.my_questions
+    @answers = @user.my_answers
+    @comments = @user.my_comments
+    @question_answers = @user.my_unanswered_questions
   end
 
   def edit
@@ -39,6 +43,9 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, notice: 'Error: account unable to be deleted.'
     end
+  end
+
+  def make_graph
   end
 
   private
