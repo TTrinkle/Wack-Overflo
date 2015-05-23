@@ -1,8 +1,10 @@
 <!-- could be a render with the questions and answers and comments on it -->
-<h3><%=@question.title%></h3>
-<h4><%=@question.body%></h4>
+<<<<<<< HEAD
+<span class='question-title'><%=@question.title%></span>
+<div>Posted by <%=link_to @question.user.username%> on 12/21/15</div>
+<p class='question-body'><%=@question.body%></p>
 <% if logged_in? && current_user.id == @question.user_id%>
-  <%= link_to "Edit this question", edit_question_path%>
+  <%= link_to "edit", edit_question_path%>
 <%end%>
 <br>
 <%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %>

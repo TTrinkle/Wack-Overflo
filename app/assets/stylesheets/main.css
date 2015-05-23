@@ -22,3 +22,18 @@ h3 {
 .center {
   margin: auto;
 }
+
+main {
+  padding: 10px 20px 0 20px;
+}
+
+.question-title {
+  font-size: 1.6em;
+  padding-bottom: 20px;
+}
+.question-body {
+  text-indent: 1em;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
