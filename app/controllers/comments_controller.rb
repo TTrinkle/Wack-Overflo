@@ -17,11 +17,11 @@ class CommentsController < ApplicationController
       new_comment = a.comments.build(body: params[:body], author_id: current_user.id)
       new_comment.save
       redirect_to question_path(a.question)
-    # else
-    #   c = Comment.find_by(id: params[:comment])
-    #   new_comment = c.comments.build(body: params[:body], author_id: current_user.id)
-    #   new_comment.save
-    #   redirect_to question_path(c.question)
+    else
+      c = Comment.find_by(id: params[:comment])
+      new_comment = c.comments.build(body: params[:body], author_id: current_user.id)
+      new_comment.save
+      redirect_to(:back)
     end
   end
 
