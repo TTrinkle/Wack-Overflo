@@ -20,15 +20,19 @@ class UsersController < ApplicationController
     @questions = @user.my_questions
     @answers = @user.my_answers
     @comments = @user.my_comments
-    @question_answers = @user.my_unanswered_questions
+    if @user.my_unanswered_questions < 1
+      @unanswered_questions = 0
+    else
+      @unanswered_questions = @user.my_unanswered_questions
+    end
   end
 
   def edit
-    @user = User.find_by_id session[:user_id]
+    @user = User.find_by id: session[:user_id]
   end
 
   def update
-    @user = User.find_by_id session[:user_id]
+    @user = User.find_by id: session[:user_id]
     if @user.update_attributes user_params
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -37,15 +41,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_id session[:user_id]
+    @user = User.find_by id: session[:user_id]
     if @user.destroy
       redirect_to root_path, notice: 'User account has been deleted.'
     else
       redirect_to root_path, notice: 'Error: account unable to be deleted.'
     end
-  end
-
-  def make_graph
   end
 
   private

@@ -23,16 +23,16 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find_by(id: params[:id])
     @answer = Answer.new
   end
 
   def edit
-    @question = Question.find(params[:id])
+    @question = Question.find_by(id: params[:id])
   end
 
   def update
-    edited_question = Question.find(params[:id])
+    edited_question = Question.find_by(id: params[:id])
     if edited_question.update_attributes(get_params)
       flash[:success] = "Your question was updated"
       redirect_to root_path
@@ -46,9 +46,12 @@ class QuestionsController < ApplicationController
     question = Question.find_by(id: params[:question_id])
     if current_user.id == question.user_id
       question.delete
-      question.save
-      flash[:success] = "Your question was deleted"
-      redirect_to root_path
+      if question.save
+        flash[:success] = "Your question was deleted"
+        redirect_to root_path
+      else
+        flash[:error] = "Your question could not be deleted"
+      end
     else
       flash[:error] = "You are not authorized to delete this question."
       redirect_to root_path
@@ -56,13 +59,13 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    @question = Question.find params[:id]
+    @question = Question.find_by id: params[:id]
     @question.upvote_by current_user
     redirect_to question_path
   end
 
   def downvote
-    @question = Question.find params[:id]
+    @question = Question.find_by id: params[:id]
     @question.downvote_by current_user
     redirect_to question_path
   end
@@ -76,7 +79,7 @@ class QuestionsController < ApplicationController
   end
 
   def get_params
-    params.require(:question).permit(:title, :body, :score)
+    params.require(:question).permit :title, :body, :score
   end
 
 end
