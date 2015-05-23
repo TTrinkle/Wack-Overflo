@@ -27,7 +27,6 @@ Rails.application.routes.draw do
 
 
   resources :comments, only: [:create, :update, :edit, :new, :destroy]
-  resources :votes, only: [:create, :new]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
