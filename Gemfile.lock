@@ -67,8 +67,6 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    gruff (0.5.1)
-      rmagick
     i18n (0.7.0)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
@@ -119,7 +117,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    rmagick (2.15.0)
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -184,7 +181,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-rails
-  gruff
   jbuilder (~> 2.0)
   jquery-rails
   pg
