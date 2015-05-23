@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :get_params, only: [:create, :update]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
   end
 
   def new
