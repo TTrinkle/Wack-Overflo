@@ -1,6 +1,17 @@
-<h3><%= @user.username %></h3>
-<p><%= @user.email %></p>
+<div class='profile-info'>
+  <h2><%= @user.username %></h2>
+  <img class='profile-photo' src="<%= avatar_url(@user, 100) %>" alt="<%= @user.username %>'s photo"%>
+  <p><%= mail_to @user.email, @user.email %></p>
+</div>
 
+<%= javascript_tag do %>
+var questions = <%= raw @questions %>;
+var answers = <%= raw @answers %>;
+var comments = <%= raw @comments %>;
+var user = <%= raw @user.username %>
+<% end %>
+
+<h3 id='chart-heading'><%= @user.username %>'s Activity</h3>
 <div id="container" style="width:100%; height:400px;"></div>
 
 <%= javascript_tag do %>
@@ -11,6 +22,3 @@ var user = <%= raw @user.username %>
 <% end %>
 
 <script type="text/javascript"> graph(user, questions, answers, comments) </script>
-
-Number of unanswered questions:
-<%= @unanswered_questions %>
