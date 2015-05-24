@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   put  "answers/:id/like" => "answers#upvote", :as => :like_answer
   put  "answers/:id/dislike" => "answers#downvote", :as => :dislike_answer
 
+  put  "questions/:id/set_answer" => "questions#set_answer", :as => :set_answer
+
   resources :comments, only: [:create, :update, :edit, :new, :destroy]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

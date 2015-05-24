@@ -12,4 +12,9 @@ class Question < ActiveRecord::Base
   def rating
     self.get_upvotes.count - self.get_downvotes.count
   end
+
+  def top_answer
+    Answer.find_by_id self.selected_answer
+  end
+
 end

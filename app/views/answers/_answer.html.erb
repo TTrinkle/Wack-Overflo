@@ -5,6 +5,10 @@
     <%= link_to content_tag(:i, "", class: ['fa', 'fa-times']), question_answer_path(question_id: @question.id, id: answer.id), method: :delete %>
   <%end%>
 
+  <% if logged_in? && current_user.id == answer.question.user_id && answer.question.selected_answer != answer.id %>
+    <%= link_to content_tag(:i, " Mark as Best Answer", class: ['fa', 'fa-check']), set_answer_path(:answer_id => answer.id ), method: :put %>
+  <%end%>
+
   <br>
 
   <div class='div-votes'>
