@@ -113,9 +113,6 @@ main {
   text-align: center;
 }
 
-.comments {
-}
-
 .comment-comments {
   text-indent: 25px;
 }
@@ -127,4 +124,13 @@ main {
 .comment-heading {
   font-size: 1.1em;
   font-weight: bold;
+}
+
+.comment-form {
+  display: none;
+}
+
+.nested {
+  position: relative;
+  right: -50px;
 }

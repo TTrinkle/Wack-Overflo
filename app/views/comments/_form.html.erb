@@ -2,6 +2,6 @@
   <% if @question %>
     <%= hidden_field_tag id_type, id %>
   <% end %>
-  <%= text_field_tag :body  %>
-  <%= submit_tag "Submit Comment" %>
+  <%= text_field_tag :body %>
+  <%= submit_tag "comment", class: "btn btn-default btn-sm" %>
 <% end %>
