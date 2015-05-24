@@ -16,7 +16,7 @@
 <br>
 <a style="cursor: pointer;" class='show-comment'>comment</a>
 <div class="comment-form"><%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %></div>
-<%= render partial: @question.comments.where(commentable_type: "Question") %>
+<%= render partial: @question.comments.where(commentable_type: "Question").order(created_at: :desc) %>
 
 <br>
 <br>
