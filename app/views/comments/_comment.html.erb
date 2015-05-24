@@ -1,3 +1,31 @@
-<%=comment.body%><%= link_to 'Delete', comment_path(comment_id: comment.id), method: :delete %><br>
-<%= render partial: 'comments/form', locals: {id_type: "comment", id: comment.id} %>
-<%= render partial: comment.comments %>
+<br>
+<span class='comment-heading'><%= distance_of_time_in_words(comment.created_at, Time.now) %> ago, <%=link_to comment.author.username, comment.author %> said</span>
+<br>
+<%=comment.body%> <%= link_to content_tag(:i, "", class: ['fa', 'fa-times']), comment_path(comment_id: comment.id), method: :delete %><br>
+<a class="" data-toggle="modal" data-target="#commentModal" style="cursor: pointer;">
+  comment
+</a>
+<hr>
+<br>
+
+
+<div class='comment-comments'>
+  <%= render partial: comment.comments %>
+</div>
+
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="answerLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="answerLabel">Create Your Answer</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'comments/form', locals: {id_type: "comment", id: comment.id} %>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

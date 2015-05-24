@@ -112,3 +112,19 @@ main {
 #chart-heading {
   text-align: center;
 }
+
+.comments {
+}
+
+.comment-comments {
+  text-indent: 25px;
+}
+
+.comment-comments > .comment-comments {
+  text-indent: 50px;
+}
+
+.comment-heading {
+  font-size: 1.1em;
+  font-weight: bold;
+}
