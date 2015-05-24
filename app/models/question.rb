@@ -12,5 +12,4 @@ class Question < ActiveRecord::Base
   def rating
     self.get_upvotes.count - self.get_downvotes.count
   end
-
 end

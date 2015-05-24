@@ -23,6 +23,18 @@ class AnswersController < ApplicationController
     end
 	end
 
+	def upvote
+	  @answer = Answer.find_by id: params[:id]
+	  @answer.upvote_by current_user
+	  redirect_to :back
+	end
+
+	def downvote
+	  @answer = Answer.find_by id: params[:id]
+	  @answer.downvote_by current_user
+	  redirect_to :back
+	end
+
 	private
 
 	def answer_params
