@@ -44,6 +44,12 @@ main {
   padding: 15px 0 20px 0;
 }
 
+.answer-body {
+  text-indent: 1em;
+  padding: 15px 0 20px 0;
+  min-height: 100px;
+}
+
 .div-votes {
   padding-top: 10px;
   padding-right: 15px;

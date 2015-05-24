@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  put  "answers/:id/like" => "answers#upvote", :as => :like_answer
+  put  "answers/:id/dislike" => "answers#downvote", :as => :dislike_answer
 
   resources :comments, only: [:create, :update, :edit, :new, :destroy]
 
