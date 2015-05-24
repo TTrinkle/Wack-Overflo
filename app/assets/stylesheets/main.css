@@ -1,3 +1,4 @@
+
 h3 {
   padding-bottom: 20px;
 }
@@ -113,13 +114,12 @@ main {
   text-align: center;
 }
 
-.comment-comments {
-  text-indent: 25px;
+.comment {
+  position: relative;
+  right: -25px;
+  font-size: 12px;
 }
 
-.comment-comments > .comment-comments {
-  text-indent: 50px;
-}
 
 .comment-heading {
   font-size: 1.1em;
@@ -133,4 +133,12 @@ main {
 .nested {
   position: relative;
   right: -50px;
+}
+
+.answer, .question {
+  font-size: 1.2em;
+  padding: 15px;
+  margin: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
