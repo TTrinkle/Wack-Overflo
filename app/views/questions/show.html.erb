@@ -1,47 +1,47 @@
 <!-- could be a render with the questions and answers and comments on it -->
-<span class='question-title'><%=@question.title%></span>
-<% if logged_in? && current_user.id == @question.user_id%>
-  <%= link_to "edit", edit_question_path%> |
-  <%= link_to 'delete', question_path(question_id: @question.id), method: :delete %>
-<%end%>
-<div>Posted by <em><%=link_to @question.user.username, @question.user %></em> on <em><%= @question.created_at.strftime("%b %d, %Y") %></em></div>
-<div class='div-votes'>
-  <%= link_to '<i class="fa fa-2x fa-caret-up"></i>'.html_safe, like_question_path(@question), method: :put %>
+<h3>Question</h3>
+<div class='question'>
+  <span class='question-title'><%=@question.title%></span>
+  <% if logged_in? && current_user.id == @question.user_id%>
+    <%= link_to content_tag(:i, "", class: ['fa', 'fa-pencil-square-o']), edit_question_path%> |
+    <%= link_to content_tag(:i, "", class: ['fa', 'fa-times']), question_path(question_id: @question.id), method: :delete %>
+  <%end%>
+  <div>Asked by <%=link_to @question.user.username, @question.user %> <%= distance_of_time_in_words(@question.created_at, Time.now) %> ago</em></div>
+  <div class='div-votes'>
+    <%= link_to '<i class="fa fa-2x fa-caret-up"></i>'.html_safe, like_question_path(@question), method: :put %>
+    <br>
+    <span class='vote-count'><%= @question.rating%></span>
+    <br>
+    <%= link_to '<i class="fa fa-2x fa-caret-down"></i>'.html_safe, dislike_question_path(@question), method: :put %>
+  </div>
+  <p class='question-body'><%=@question.body%></p>
   <br>
-  <span class='vote-count'><%= @question.rating%></span>
-  <br>
-  <%= link_to '<i class="fa fa-2x fa-caret-down"></i>'.html_safe, dislike_question_path(@question), method: :put %>
-</div>
-<p class='question-body'><%=@question.body%></p>
-<br>
-<a style="cursor: pointer;" class='show-comment'>comment</a>
-<div class="comment-form"><%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %></div>
-<%= render partial: @question.comments.where(commentable_type: "Question").order(created_at: :desc) %>
+  <a style="cursor: pointer;" class='show-comment'>comment</a>
+  <div class="comment-form"><%= render partial: 'comments/form', locals: {id_type: "question", id: @question.id} %></div>
+  <%= render partial: @question.comments.where(commentable_type: "Question").order(created_at: :desc) %>
+  <% if current_user && current_user != @question.user %>
+  <hr>
+    <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#answerModal">
+      Answer This Question
+    </button>
 
-<br>
-<br>
-
-<h3>Answers</h3>
-<%= render @question.answers %>
-
-<% if current_user && current_user != @question.user %>
-  <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#answerModal">
-    Answer This Question
-  </button>
-
-  <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="answerLabel">Create Your Answer</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'answers/form' %>
-          <div class="modal-footer">
+    <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="answerLabel">Create Your Answer</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'answers/form' %>
+            <div class="modal-footer">
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<h3>Answers</h3>
+<%= render @question.answers %>
