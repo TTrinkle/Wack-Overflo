@@ -12,9 +12,9 @@
     <div class="container">
       <%= render 'layouts/header' %>
       <main>
-        <div class="flash"><%=flash[:success]%></div>
-        <div class="flash"><%=flash[:error]%></div>
-        <div class="flash"><%=flash[:danger]%></div>
+        <div class="flash-success"><%=flash[:success]%></div>
+        <div class="flash-error"><%=flash[:error]%></div>
+        <div class="flash-danger"><%=flash[:danger]%></div>
         <%= yield %>
       </main>
     </div>
