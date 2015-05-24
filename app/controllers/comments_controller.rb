@@ -23,13 +23,9 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find_by id: params[:comment_id]
     if current_user.id == comment.author_id
-      comment.delete
-      if comment.save
+      comment.destroy
         flash[:success] = "Your comment was deleted"
         redirect_to :back
-      else
-        flash[:error] = "Your comment could not be deleted"
-      end
     else
       flash[:error] = "You are not authorized to delete this comment."
       redirect_to :back

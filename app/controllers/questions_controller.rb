@@ -45,13 +45,9 @@ class QuestionsController < ApplicationController
   def destroy
     question = Question.find_by(id: params[:question_id])
     if current_user.id == question.user_id
-      question.delete
-      if question.save
-        flash[:success] = "Your question was deleted"
-        redirect_to root_path
-      else
-        flash[:error] = "Your question could not be deleted"
-      end
+      question.destroy
+      flash[:success] = "Your question was deleted"
+      redirect_to root_path
     else
       flash[:error] = "You are not authorized to delete this question."
       redirect_to root_path
