@@ -1,9 +1,10 @@
 <%= form_for @question do |f| %>
   <%= f.label :title %>:
-  <%= f.text_field :title %><br />
-
+  <%= f.text_field :title, class: "form-control", value: @question.title %>
+  <br />
   <%= f.label :body %>:
-  <%= f.text_field :body %><br />
+  <%= f.text_area :body, class: "form-control", :size => "25x20", placeholder: "Please give a detailed description of your problem"  %>
+  <br />
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-default"%>
 <% end %>
