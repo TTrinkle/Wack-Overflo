@@ -1,4 +1,3 @@
-
 h3 {
   padding-bottom: 20px;
 }
@@ -114,6 +113,10 @@ main {
   width: 30%;
   margin: auto;
   text-align: center;
+}
+
+#profile-heading {
+  font-family: 'Bubblegum Sans', cursive;
 }
 
 #chart-heading {
