@@ -17,4 +17,8 @@ class Question < ActiveRecord::Base
     Answer.find_by_id self.selected_answer
   end
 
+  def other_answers
+    self.answers.where.not(id: self.top_answer)
+  end
+
 end
