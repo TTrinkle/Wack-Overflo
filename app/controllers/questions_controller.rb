@@ -35,10 +35,10 @@ class QuestionsController < ApplicationController
     edited_question = Question.find_by(id: params[:id])
     if edited_question.update_attributes(get_params)
       flash[:success] = "Your question was updated"
-      redirect_to root_path
+      redirect_to edited_question
     else
       flash[:error] = "Your question could not be updated"
-      redirect_to new_question_path
+      redirect_to edited_question
     end
   end
 
@@ -83,7 +83,7 @@ class QuestionsController < ApplicationController
   def require_login
     return true unless !logged_in?
     else flash[:error] = "You must be logged in to do that."
-    redirect_to(:back)
+    redirect_to :back
   end
 
   def get_params
