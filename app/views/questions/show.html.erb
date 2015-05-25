@@ -42,12 +42,17 @@
     </div>
   <% end %>
 </div>
-<% if @question.top_answer %>
-  <div id='top-answer'>
-    <h3>Top Answer</h3>
-    <%= render @question.top_answer %>
-  </div>
-<% end %>
-
-<h3>All Answers</h3>
-<%= render @question.answers %>
+<% if @question.answers.length > 0 %>
+  <% if @question.top_answer %>
+    <div id='top-answer'>
+      <h3>Top Answer</h3>
+      <%= render @question.top_answer %>
+    </div>
+  <% end %>
+  <% if @question.other_answers.length > 0 %>
+    <h3>Other Answers</h3>
+    <%= render @question.other_answers %>
+  <% end %>
+<% else %>
+  <h3>no answers yet</h3>
+<%end %>
