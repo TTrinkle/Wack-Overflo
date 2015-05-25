@@ -55,15 +55,25 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    @question = Question.find_by id: params[:id]
-    @question.upvote_by current_user
-    redirect_to question_path
+    if logged_in?
+      @question = Question.find_by id: params[:id]
+      @question.upvote_by current_user
+      redirect_to question_path
+    else
+      flash[:error] = "You must be logged in to do that"
+        redirect_to :back
+    end
   end
 
   def downvote
-    @question = Question.find_by id: params[:id]
-    @question.downvote_by current_user
-    redirect_to question_path
+    if logged_in?
+      @question = Question.find_by id: params[:id]
+      @question.downvote_by current_user
+      redirect_to question_path
+    else
+      flash[:error] = "You must be logged in to do that"
+        redirect_to :back
+    end
   end
 
   def set_answer
