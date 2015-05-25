@@ -1,0 +1,22 @@
+<div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="answerLabel">What is your question?</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Question.new do |f| %>
+          <%= f.label :title %> of Question:
+          <%= f.text_field :title, class: "form-control", placeholder: "Title of Question Here" %>
+          <br>
+          <%= f.label :body %> of Question:
+          <%= f.text_area :body, class: "form-control", :size => "25x20", placeholder: "Please describe your question in detail."  %>
+          <%= f.submit class: "btn btn-default modal-button"%>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

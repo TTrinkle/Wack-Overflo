@@ -1,0 +1,18 @@
+<% nested = 'nested' if comment.commentable_type == "Comment" %>
+<div class="comment <%= nested %>">
+  <hr>
+  <br>
+  <span class='comment-heading'><%= distance_of_time_in_words(comment.created_at, Time.now) %> ago, <%=link_to comment.author.username, comment.author %> commented</span>
+  <br>
+  <%=comment.body%>
+  <% if current_user == comment.author %>
+    <%= link_to content_tag(:i, "", class: ['fa', 'fa-times']), comment_path(comment_id: comment.id), method: :delete %><br>
+  <% end %>
+  <% unless nested %>
+    <a style="cursor: pointer;" class='show-comment'>comment</a>
+  <% end %>
+  <div class='comment-form'><%= render partial: 'comments/form', locals: {id_type: "comment", id: comment.id} %></div>
+  <br>
+<%= render partial: comment.comments %>
+</div>
+

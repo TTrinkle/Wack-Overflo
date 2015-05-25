@@ -1,0 +1,23 @@
+
+<div>
+<div class='question-stats'>
+  <span class="score"><%= question.rating%></span>
+  <br>
+  <div class='votes'>score</div>
+</div>
+<div class='question-stats'>
+  <span class="num-answers"><%= question.answers.count %></span>
+  <br>
+  <div class='votes'>answers</div>
+</div>
+<%=link_to question.title, question_path(question), :class=> "question-title" %>
+<br>
+<span>Posted by <%= link_to question.user.username, question.user %> <%= distance_of_time_in_words(question.created_at, Time.now) %> ago</span>
+</div>
+<br>
+
+
+
+
+
+

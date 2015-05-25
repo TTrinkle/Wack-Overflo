@@ -8,6 +8,29 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
+  root 'questions#index'
+
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  resources :users
+
+  resources :questions do
+    resources :answers, only: [:create, :update, :edit, :new, :destroy]
+    member do
+      put "like", to: "questions#upvote"
+      put "dislike", to: "questions#downvote"
+    end
+  end
+
+  put  "answers/:id/like" => "answers#upvote", :as => :like_answer
+  put  "answers/:id/dislike" => "answers#downvote", :as => :dislike_answer
+
+  put  "questions/:id/set_answer" => "questions#set_answer", :as => :set_answer
+
+  resources :comments, only: [:create, :update, :edit, :new, :destroy]
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

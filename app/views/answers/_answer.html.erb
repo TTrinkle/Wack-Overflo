@@ -1,0 +1,34 @@
+<div class='answer'>
+  <span class='comment-heading'><%= distance_of_time_in_words(answer.created_at, Time.now) %> ago, <%=link_to answer.author.username, answer.author %> answered</span>
+
+  <% if logged_in? && current_user.id == answer.author_id%>
+    <%= link_to content_tag(:i, "", class: ['fa', 'fa-times']), question_answer_path(question_id: @question.id, id: answer.id), method: :delete %>
+  <%end%>
+
+  <% if logged_in? && current_user.id == answer.question.user_id && answer.question.selected_answer != answer.id %>
+    <%= link_to content_tag(:i, " Mark as Best Answer", class: ['fa', 'fa-check']), set_answer_path(:answer_id => answer.id ), method: :put %>
+  <%end%>
+
+  <br>
+
+  <div class='div-votes'>
+    <%= link_to '<i class="fa fa-2x fa-caret-up"></i>'.html_safe, like_answer_path(answer), method: :put %>
+    <br>
+    <span class='vote-count'><%= answer.rating%></span>
+    <br>
+    <%= link_to '<i class="fa fa-2x fa-caret-down"></i>'.html_safe, dislike_answer_path(answer), method: :put %>
+  </div>
+
+  <p class='answer-body'><%=answer.body%></p>
+
+  <br>
+
+  <a style="cursor: pointer;" class='show-comment'>comment</a>
+
+  <div class='comment-form'>
+    <%= render partial: 'comments/form', locals: {id_type: "answer", id: answer.id} %>
+  </div>
+
+  <%= render answer.comments %>
+  <br>
+</div>

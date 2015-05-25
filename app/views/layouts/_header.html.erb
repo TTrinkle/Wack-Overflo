@@ -1,0 +1,39 @@
+<header class="navbar navbar-default">
+  <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><i class="fa fa-file-code-o"> Wack OverFlo</a></i>
+      </div>
+      <div class="navbar-left nav">
+        <% if !current_user %>
+          <span id="create-account"><%= link_to 'Create An Account', new_user_path %></span>
+        <% end %>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+          <li><a style="cursor: pointer;" data-toggle="modal" data-target="#questionModal"><i class="fa fa-plus"></i> Ask A Question</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/users/<%= current_user.id %>">My Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Logout", '/logout', method: :delete %></li>
+            </ul>
+          </li>
+          <% else %>
+            <div id='form-login'>
+              <%= render 'sessions/login' %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+</header>

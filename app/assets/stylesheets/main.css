@@ -1,0 +1,178 @@
+h3 {
+  padding-bottom: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(219,99,86);
+}
+
+#create-account {
+  position: relative;
+  top: 15px;
+}
+
+#form-login {
+  position: relative;
+  top: 7px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.small-wrapper {
+  width: 30%;
+}
+
+.center {
+  margin: auto;
+}
+
+main {
+  padding: 10px 20px 0 20px;
+  color: #666;
+}
+
+.question-title {
+  font-size: 1.6em;
+  color: #333;
+}
+.question-body {
+  text-indent: 1em;
+  padding: 15px 0 20px 0;
+}
+
+.answer-body {
+  text-indent: 1em;
+  padding: 15px 0 20px 0;
+  min-height: 100px;
+}
+
+.div-votes {
+  padding-top: 10px;
+  padding-right: 15px;
+  display: inline;
+  float: left;
+
+}
+
+.vote-count {
+  padding-left: 2px;
+  font-size: 1.5em;
+}
+
+.modal-button {
+  float: right;
+  margin-top: 10px;
+}
+
+#index-heading {
+  color: rgba(44, 62, 80,1.0);
+  padding-bottom: 10px;
+  font-size: 1.6em;
+  border-bottom: 1px solid #eee;
+}
+
+.question-stats {
+  padding: 3px;
+  background-color: rgba(52, 152, 219,0.3);
+  border-radius: 10px;
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.question-title {
+  display: inline;
+  position: relative;
+  top: -5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.votes {
+  display: inline;
+  font-size: .8em;
+}
+
+.score {
+  padding-left: 10px;
+}
+
+.num-answers {
+  padding-left: 18px;
+}
+
+.profile-photo {
+  border-radius: 100%;
+}
+
+.profile-info {
+  width: 30%;
+  margin: auto;
+  text-align: center;
+}
+
+#profile-heading {
+  font-family: 'Bubblegum Sans', cursive;
+}
+
+#chart-heading {
+  text-align: center;
+}
+
+.comment {
+  position: relative;
+  right: -25px;
+  font-size: 12px;
+}
+
+
+.comment-heading {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.comment-form {
+  display: none;
+}
+
+.nested {
+  position: relative;
+  right: -50px;
+}
+
+.answer, .question {
+  font-size: 1.2em;
+  padding: 15px;
+  margin: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.flash-success {
+  color: green;
+}
+
+.flash-error {
+  color: red;
+}
+
+.flash-danger {
+  color: yellow;
+}
+
+#top-answer {
+  font-size: 1.2em;
+  padding: 15px;
+  margin: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(52, 152, 219,0.05);
+}
+
+.container {
+  width: 80%;
+}
