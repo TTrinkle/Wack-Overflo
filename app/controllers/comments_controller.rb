@@ -5,17 +5,19 @@ class CommentsController < ApplicationController
     if params[:question]
       question = Question.find_by id: params[:question]
       new_comment = question.comments.build(body: params[:body], author_id: current_user.id)
-      new_comment.save
-      redirect_to :back
     elsif params[:answer]
       answer = Answer.find_by id: params[:answer]
       new_comment = answer.comments.build(body: params[:body], author_id: current_user.id)
-      new_comment.save
-      redirect_to :back
     else
       comment = Comment.find_by id: params[:comment]
       new_comment = comment.comments.build(body: params[:body], author_id: current_user.id)
-      new_comment.save
+    end
+
+    if new_comment.save
+      flash[:success] = "Your comment was saved"
+      redirect_to :back
+    else
+      flash[:error] = "Unable to delete comment."
       redirect_to :back
     end
   end
