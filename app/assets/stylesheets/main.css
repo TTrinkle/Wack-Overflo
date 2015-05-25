@@ -160,3 +160,16 @@ main {
 .flash-danger {
   color: yellow;
 }
+
+#top-answer {
+  font-size: 1.2em;
+  padding: 15px;
+  margin: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(52, 152, 219,0.05);
+}
+
+.container {
+  width: 80%;
+}

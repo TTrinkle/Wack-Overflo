@@ -42,6 +42,12 @@
     </div>
   <% end %>
 </div>
+<% if @question.top_answer %>
+  <div id='top-answer'>
+    <h3>Top Answer</h3>
+    <%= render @question.top_answer %>
+  </div>
+<% end %>
 
-<h3>Answers</h3>
+<h3>All Answers</h3>
 <%= render @question.answers %>

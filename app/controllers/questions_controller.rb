@@ -66,6 +66,18 @@ class QuestionsController < ApplicationController
     redirect_to question_path
   end
 
+  def set_answer
+    question = Question.find_by_id params[:id]
+    if current_user && current_user.id == question.user_id
+      question.selected_answer = params[:answer_id]
+      question.save
+      redirect_to :back
+    else
+      flash[:error] = "You are not authorized to select a best answer for this question."
+      redirect_to :back
+    end
+  end
+
   private
 
   def require_login
@@ -75,7 +87,7 @@ class QuestionsController < ApplicationController
   end
 
   def get_params
-    params.require(:question).permit :title, :body, :score
+    params.require(:question).permit :title, :body, :selected_answer
   end
 
 end
